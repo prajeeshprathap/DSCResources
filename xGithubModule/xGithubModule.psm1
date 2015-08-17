@@ -11,7 +11,7 @@ class xGithubModule
     [System.String] $Url
 
     [DsCProperty(Mandatory)]
-    [System.String] $ModuleName
+    [System.String] $Module
 
     [DsCProperty(Mandatory)]
     [Ensure] $Ensure
@@ -23,7 +23,7 @@ class xGithubModule
     {       
         $this.IsValid = $false
         $fileName = $this.Url.Substring($this.Url.LastIndexOf('/'), $this.Url.Length - ($this.Url.LastIndexOf('/')))
-        $moduleFolder = Join-Path 'C:\Program Files\WindowsPowerShell\Modules' $this.ModuleName
+        $moduleFolder = Join-Path 'C:\Program Files\WindowsPowerShell\Modules' $this.Module
                 
         $fileExists = Test-Path (Join-Path $moduleFolder $fileName)
 
@@ -49,7 +49,7 @@ class xGithubModule
         $modulePath = 'C:\Program Files\WindowsPowerShell\Modules'
         $fileName = $this.Url.Substring($this.Url.LastIndexOf('/'), $this.Url.Length - ($this.Url.LastIndexOf('/')))
 
-        $moduleFolder = Join-Path 'C:\Program Files\WindowsPowerShell\Modules' $this.ModuleName
+        $moduleFolder = Join-Path 'C:\Program Files\WindowsPowerShell\Modules' $this.Module
         $filePath = Join-Path $moduleFolder $fileName                
       
         if($this.Ensure -eq [Ensure]::Present)
